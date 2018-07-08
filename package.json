@@ -1,6 +1,6 @@
 {
   "name": "hangman",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "hangman express server",
   "main": "index.js",
   "author": "Alexander Cannon",
@@ -8,7 +8,6 @@
   "scripts": {
     "start": "nodemon src",
     "release": "standard-version"
-
   },
   "dependencies": {
     "body-parser": "^1.18.3",
