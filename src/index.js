@@ -11,7 +11,7 @@ app.use(
     saveUninitialized: true,
     secret: "life is a beach",
     cookie: { maxAge: 1200000 },
-    resave: true
+    resave: true,
   })
 );
 
