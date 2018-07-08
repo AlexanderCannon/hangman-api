@@ -1,7 +1,7 @@
 const generateWord = () => "ouch";
 
 const startGame = (req, res) => {
-  if (!req.session.game) req.session.game = {}
+  if (!req.session.game) req.session.game = {};
   const { word, solved, failed } = req.session.game;
   const maxGuesses = req.params.guesses || 10;
   if ((req.session.game.word = word && (!solved || !failed))) {
@@ -21,7 +21,7 @@ const startGame = (req, res) => {
 };
 
 const guess = (req, res) => {
-  const { guesses, word } = req.session.game;
+  const { guesses, word, maxGuesses } = req.session.game;
   const { guess } = req.params;
   if (!word) {
     res.json({ message: "start game before guessing!" });
@@ -36,12 +36,18 @@ const guess = (req, res) => {
       req.session.game.guesses.push(guess);
       const intersection = guesses.filter(element => answer.includes(element));
       if (intersection.length === word.length) {
+        req.session.game = { solved: true, ...req.session.game };
         res.json({
           message: "congratulations, you won!",
           word
         });
       } else {
-        res.json({ message: `you guessed ${guess}` });
+        if (guesses.length === maxGuesses) {
+          req.session.game = { failed: true, ...req.session.game };
+          res.json("sorry you lose");
+        } else {
+          res.json({ message: `you guessed ${guess}` });
+        }
       }
     }
   }
