@@ -6,12 +6,15 @@
   "author": "Alexander Cannon",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src"
+    "start": "nodemon src",
+    "release": "standard-version"
+
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "express-session": "^1.15.6"
+    "express-session": "^1.15.6",
+    "standard-version": "^4.4.0"
   },
   "devDependencies": {
     "eslint-config-airbnb-base": "^13.0.0",
