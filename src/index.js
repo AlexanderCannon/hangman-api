@@ -10,7 +10,7 @@ app.use(
   expressSession({
     saveUninitialized: true,
     secret: "life is a beach",
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 1200000 },
     resave: true
   })
 );
