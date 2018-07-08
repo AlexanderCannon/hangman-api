@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/start", startGame);
+app.get("/start/:guesses", startGame);
 app.get("/guess/:guess", guess);
 app.get("/guesses", guesses);
 const port = process.env.port || 1989;

@@ -15,10 +15,10 @@ const startGame = (req, res) => {
 const guess = (req, res) => {
   const { guesses, word } = req.session;
   const { guess } = req.params;
-  console.log(typeof guesses, guess);
   if (!word) {
     res.json({ message: "start game before guessing!" });
   } else {
+    const answer = word.split("");
     if (typeof guesses === "undefined") {
       req.session.guesses = [guess];
       res.json({ message: `you guessed ${guess}` });
@@ -26,7 +26,15 @@ const guess = (req, res) => {
       res.json({ message: "already guessed that letter" });
     } else {
       req.session.guesses.push(guess);
-      res.json({ message: `you guessed ${guess}` });
+      const intersection = guesses.filter(element => answer.includes(element));
+      if (intersection.length === word.length) {
+        res.json({
+          message: "congratulations, you won!",
+          word
+        });
+      } else {
+        res.json({ message: `you guessed ${guess}` });
+      }
     }
   }
 };
