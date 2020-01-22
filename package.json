@@ -13,7 +13,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.17.1",
     "express-session": "^1.15.6",
-    "standard-version": "^4.4.0"
+    "standard-version": "^7.1.0"
   },
   "devDependencies": {
     "eslint-config-airbnb-base": "^13.0.0",
